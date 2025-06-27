@@ -10,8 +10,23 @@ export default function ChatWidget() {
     const [loading, setLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
+
+
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
+
+    // ✅ Load from memory
+    useEffect(() => {
+        const savedMessages = localStorage.getItem('chatMessages');
+        if (savedMessages) {
+            setMessages(JSON.parse(savedMessages));
+        }
+    }, []);
+
+    // ✅ Save to memory
+    useEffect(() => {
+        localStorage.setItem('chatMessages', JSON.stringify(messages));
     }, [messages]);
 
     const handleSend = async () => {
