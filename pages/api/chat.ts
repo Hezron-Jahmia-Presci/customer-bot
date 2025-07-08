@@ -154,6 +154,7 @@ const systemPromptMap: Record<Intent, string> = {
   chatbot: 'You are an assistant named Megan. If the user asks about you, tell them you’re an AI trained to help with company-related questions, and you\'re here 24/7.',
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function detectIntentWithFallback(message: string): { intent: Intent; confidence: number } {
   const intent = detectIntent(message);
   const confidence = intent === 'general' ? 0.5 : 0.9; // dummy rule

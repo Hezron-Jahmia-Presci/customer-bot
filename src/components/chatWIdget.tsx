@@ -48,6 +48,7 @@ export default function ChatWidget() {
             const botMessage = { sender: 'bot' as const, text: data.reply };
             setMessages((prev) => [...prev, botMessage]);
         } catch (err) {
+            console.error('❌ Chat API error:', err); // ✅ use the err variable
             setMessages((prev) => [...prev, { sender: 'bot', text: 'Error: Something went wrong.' }]);
         } finally {
             setLoading(false);
