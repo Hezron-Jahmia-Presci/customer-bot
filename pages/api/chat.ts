@@ -253,7 +253,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     return res.status(200).json({ reply });
   } catch (err) {
-    console.error('❌ getBotReply error:', err);
+    console.error('❌ getBotReply or Supabase insert error:', err); // Add this to see the real issue
     return res.status(500).json({ error: 'Something went wrong while processing your message.' });
   }
 }
+
